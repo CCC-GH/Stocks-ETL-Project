@@ -30,3 +30,13 @@ NW Data Science Group Project #2 - Extract, Transform, Load
     <img src="https://github.com/ppalani09/Stocks-ETL-Project/blob/main/images/Slide5.PNG"/>
     <br>
 </p>
+
+<p>
+    <img src="https://github.com/ppalani09/Stocks-ETL-Project/blob/main/images/Slide6.PNG"/>
+    <br>
+</p>
+
+<p>
+    <img src="https://github.com/ppalani09/Stocks-ETL-Project/blob/main/images/Slide7.PNG"/>
+    <br>
+</p>
