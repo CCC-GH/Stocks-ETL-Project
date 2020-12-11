@@ -12,7 +12,9 @@ import nest_asyncio
 nest_asyncio.apply()
 
 # LIST OF TICKER SYMBOLS TO SEARCH BY #
-tickers = ['MSFT','TSLA','AMZN','AAPL','JPM','WORK','CRM','ZM','PTON','DIS','MCD','PRTY','CSCO','GOOGL','ORCL']
+tickers = ['ZM','PTON','DIS','MCD','PRTY','CSCO','GOOGL','ORCL', 'WORK']
+
+# SCRAPED = ['MSFT','TSLA','AMZN','AAPL','CRM']
 
 # CREATES EMPTY DATAFRAME TO BE APPENDED TO #
 agg_df = pandas.DataFrame(columns = ['date', 'search', 'id'])
@@ -21,7 +23,7 @@ for ticker in tickers:
     # CONFIG FOR SCRAPE, BASED ON TICKER SYMBOL #
     c = twint.Config()
     c.Search = ticker
-    c.Since = '2020-12-8' # REASONABLE START DATE (THIS TAKES A WHILE TO COOK)
+    c.Since = '2020-11-01' # REASONABLE START DATE (THIS TAKES A WHILE TO COOK)
     c.Hide_output = True
     c.Pandas = True
     
@@ -44,12 +46,13 @@ for ticker in tickers:
     
     # APPENDS TICKER DATAFRAMES TO AGGREGATE DATAFRAME #
     agg_df = agg_df.append(Tweets_df, sort = False)
-
+    
+    
 # RENAMES COLUMN NAMES OF AGGREGATED DATAFRAME #    
-agg_df.columns = ['date', 'ticker', 'tweet_id']
+agg_df.columns = ['Date', 'Ticker', 'TweetId']
 
 # GROUPS AGGREGATED DATAFRAME BY TICKER AND DATE #
-agg_df = agg_df.groupby(['ticker', 'date']).count()
+agg_df = agg_df.groupby(['Ticker', 'Date']).count()
 
 # WRITES AGGREGATED DATAFRANE TO A CSV #
 agg_df.to_csv("./ticker_data/agg_data.csv")
